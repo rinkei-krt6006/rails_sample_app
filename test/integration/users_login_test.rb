@@ -5,6 +5,8 @@ class UsersLoginTest < ActionDispatch::IntegrationTest
   def setup
     @user = users(:michael)
   end
+
+
   test "login with valid information followed by logout" do
     get login_path
     post login_path, params: { session: { email:    @user.email,
@@ -39,4 +41,6 @@ class UsersLoginTest < ActionDispatch::IntegrationTest
     log_in_as(@user, remember_me: '0')
     assert_empty cookies['remember_token']
   end
+
+
 end
